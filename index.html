@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Informe de Convenios y Alianzas - Análisis Porcentual</title>
+    <title>Informe de Convenios - Análisis Porcentual Individual</title>
     <style>
         * {
             margin: 0;
@@ -23,7 +23,6 @@
             margin: 0 auto;
         }
 
-        /* Header */
         .header {
             background: white;
             border-radius: 15px 15px 0 0;
@@ -43,7 +42,7 @@
             display: block;
         }
 
-        .header .total-general {
+        .total-general {
             background: linear-gradient(135deg, #28a745, #20c997);
             color: white;
             padding: 20px;
@@ -52,18 +51,17 @@
             text-align: center;
         }
 
-        .header .total-general .label {
+        .total-general .label {
             font-size: 1.2em;
             opacity: 0.9;
         }
 
-        .header .total-general .value {
+        .total-general .value {
             font-size: 3em;
             font-weight: bold;
             letter-spacing: 2px;
         }
 
-        /* Navegación */
         .navigation {
             background: #f8f9fa;
             padding: 15px 30px;
@@ -113,7 +111,6 @@
             font-weight: 600;
         }
 
-        /* Contenedor de slides */
         .slides-container {
             background: white;
             padding: 30px;
@@ -142,7 +139,6 @@
             padding-bottom: 10px;
         }
 
-        /* Grid de tarjetas */
         .cards-grid {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
@@ -175,7 +171,7 @@
         }
 
         .card-title {
-            font-size: 1.2em;
+            font-size: 1.1em;
             font-weight: 600;
             color: #1e3c72;
             margin-bottom: 10px;
@@ -224,42 +220,6 @@
             transition: width 1s ease;
         }
 
-        /* Tabla de resumen */
-        .summary-table {
-            width: 100%;
-            border-collapse: collapse;
-            margin: 20px 0;
-            background: white;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-        }
-
-        .summary-table th {
-            background: #1e3c72;
-            color: white;
-            padding: 12px;
-            text-align: left;
-        }
-
-        .summary-table td {
-            padding: 10px 12px;
-            border-bottom: 1px solid #dee2e6;
-        }
-
-        .summary-table tr:hover {
-            background: #f8f9fa;
-        }
-
-        .summary-table .total-row {
-            background: #e8f4fd;
-            font-weight: bold;
-        }
-
-        .percentage-column {
-            color: #007bff;
-            font-weight: 600;
-        }
-
-        /* Estadísticas */
         .stats-container {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
@@ -294,13 +254,6 @@
             margin-top: 10px;
         }
 
-        .stat-box .sub-value {
-            font-size: 0.9em;
-            color: #28a745;
-            margin-top: 5px;
-        }
-
-        /* Gráfico de barras con porcentajes */
         .chart-container {
             background: white;
             padding: 20px;
@@ -315,8 +268,8 @@
         }
 
         .chart-bar .label {
-            width: 200px;
-            font-size: 0.95em;
+            width: 250px;
+            font-size: 0.9em;
             color: #1e3c72;
             font-weight: 600;
         }
@@ -327,7 +280,6 @@
             background: #e9ecef;
             border-radius: 15px;
             overflow: hidden;
-            position: relative;
         }
 
         .chart-bar .bar {
@@ -349,6 +301,7 @@
             text-align: right;
             font-weight: bold;
             color: #1e3c72;
+            margin-left: 10px;
         }
 
         .chart-bar .percentage {
@@ -358,7 +311,40 @@
             font-weight: 600;
         }
 
-        /* Tooltips */
+        .summary-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            background: white;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        .summary-table th {
+            background: #1e3c72;
+            color: white;
+            padding: 12px;
+            text-align: left;
+        }
+
+        .summary-table td {
+            padding: 10px 12px;
+            border-bottom: 1px solid #dee2e6;
+        }
+
+        .summary-table tr:hover {
+            background: #f8f9fa;
+        }
+
+        .summary-table .total-row {
+            background: #e8f4fd;
+            font-weight: bold;
+        }
+
+        .percentage-column {
+            color: #007bff;
+            font-weight: 600;
+        }
+
         .tooltip {
             position: relative;
             display: inline-block;
@@ -367,7 +353,7 @@
 
         .tooltip .tooltiptext {
             visibility: hidden;
-            width: 200px;
+            width: 250px;
             background: #1e3c72;
             color: white;
             text-align: center;
@@ -377,9 +363,10 @@
             z-index: 1;
             bottom: 125%;
             left: 50%;
-            margin-left: -100px;
+            margin-left: -125px;
             opacity: 0;
             transition: opacity 0.3s;
+            font-size: 0.9em;
         }
 
         .tooltip:hover .tooltiptext {
@@ -387,7 +374,6 @@
             opacity: 1;
         }
 
-        /* Footer */
         .footer {
             background: #1e3c72;
             color: white;
@@ -402,7 +388,6 @@
             margin-top: 10px;
         }
 
-        /* Responsive */
         @media (max-width: 768px) {
             .header h1 {
                 font-size: 1.8em;
@@ -410,10 +395,6 @@
             
             .cards-grid {
                 grid-template-columns: 1fr;
-            }
-            
-            .summary-table {
-                font-size: 0.9em;
             }
             
             .chart-bar {
@@ -425,7 +406,6 @@
             .chart-bar .value,
             .chart-bar .percentage {
                 width: 100%;
-                text-align: left;
                 margin: 2px 0;
             }
         }
@@ -434,7 +414,7 @@
 <body>
     <div class="container">
         <div class="header">
-            <h1>Informe de Convenios y Alianzas <small>Análisis Porcentual Detallado - Gerencia</small></h1>
+            <h1>Informe de Convenios <small>Análisis Porcentual Individual - Sin Agrupaciones</small></h1>
             <div class="total-general">
                 <div class="label">TOTAL GENERAL DE CONVENIOS</div>
                 <div class="value" id="totalGeneral">$56,128,871.66</div>
@@ -443,7 +423,7 @@
         </div>
 
         <div class="navigation">
-            <span class="slide-indicator" id="slideIndicator">Vista General con Porcentajes</span>
+            <span class="slide-indicator" id="slideIndicator">Vista General - Todos los Convenios</span>
             <div class="nav-buttons">
                 <button class="nav-btn prev" id="prevBtn" onclick="changeView(-1)">← Anterior</button>
                 <button class="nav-btn next" id="nextBtn" onclick="changeView(1)">Siguiente →</button>
@@ -451,33 +431,38 @@
         </div>
 
         <div class="slides-container" id="slidesContainer">
-            <!-- Slide 1: Vista General con Porcentajes -->
+            <!-- Slide 1: Todos los Convenios - Lista Completa -->
             <div class="slide active" id="slide1">
-                <h2 class="slide-title">📊 Vista General - Análisis Porcentual</h2>
+                <h2 class="slide-title">📋 TODOS LOS CONVENIOS (38 Convenios)</h2>
                 
-                <!-- Estadísticas rápidas con porcentajes -->
-                <div class="stats-container" id="quickStats">
-                    <!-- Se llenará con JavaScript -->
-                </div>
+                <div class="stats-container" id="quickStats"></div>
 
-                <!-- Top 5 convenios con porcentajes -->
-                <div style="margin: 30px 0;">
-                    <h3 style="color: #1e3c72; margin-bottom: 20px;">🔝 Top 5 Convenios - Mayor Impacto Porcentual</h3>
-                    <div id="top5Percentage" class="cards-grid"></div>
-                </div>
+                <div class="cards-grid" id="allConvenios"></div>
+            </div>
 
-                <!-- Distribución porcentual general -->
+            <!-- Slide 2: Top 10 Convenios por Valor -->
+            <div class="slide" id="slide2">
+                <h2 class="slide-title">🏆 TOP 10 CONVENIOS - MAYOR IMPACTO</h2>
+                
+                <div class="cards-grid" id="topConvenios"></div>
+
                 <div class="chart-container">
-                    <h3 style="margin-bottom: 20px; color: #1e3c72;">📈 Distribución Porcentual Acumulada</h3>
-                    <div id="percentageDistribution"></div>
+                    <h3 style="margin-bottom: 20px;">Distribución del Top 10 vs Resto</h3>
+                    <div id="top10Chart"></div>
                 </div>
             </div>
 
-            <!-- Slide 2: Análisis de Concentración por Valor -->
-            <div class="slide" id="slide2">
-                <h2 class="slide-title">🎯 Análisis de Concentración - Pareto</h2>
+            <!-- Slide 3: Análisis de Concentración (Pareto) -->
+            <div class="slide" id="slide3">
+                <h2 class="slide-title">📊 ANÁLISIS DE CONCENTRACIÓN</h2>
                 
                 <div class="stats-container">
+                    <div class="stat-box">
+                        <div class="number" id="top1Name">124 CONVENIO 1A 2025</div>
+                        <div class="percentage" id="top1Percentage">0%</div>
+                        <div class="label">Convenio más grande</div>
+                        <div class="sub-value" id="top1Value">$0</div>
+                    </div>
                     <div class="stat-box">
                         <div class="number" id="top3Count">3</div>
                         <div class="percentage" id="top3Percentage">0%</div>
@@ -498,135 +483,102 @@
                     </div>
                 </div>
 
-                <div class="chart-container">
-                    <h3 style="margin-bottom: 20px; color: #1e3c72;">Curva de Concentración (Lorenz)</h3>
-                    <div id="paretoChart"></div>
-                </div>
-
-                <div class="summary-table-container">
-                    <table class="summary-table" id="paretoTable">
-                        <!-- Se llenará con JavaScript -->
-                    </table>
-                </div>
+                <table class="summary-table" id="paretoTable"></table>
             </div>
 
-            <!-- Slide 3: Análisis por Rangos con Porcentajes -->
-            <div class="slide" id="slide3">
-                <h2 class="slide-title">📊 Distribución por Rangos - Porcentajes</h2>
+            <!-- Slide 4: Convenios por Rango de Valores -->
+            <div class="slide" id="slide4">
+                <h2 class="slide-title">📈 DISTRIBUCIÓN POR RANGOS</h2>
                 
-                <div class="stats-container" id="rangeStats">
-                    <!-- Se llenará con JavaScript -->
-                </div>
+                <div class="stats-container" id="rangeStats"></div>
 
                 <div class="chart-container">
-                    <h3 style="margin-bottom: 20px; color: #1e3c72;">Contribución Porcentual por Rango</h3>
+                    <h3 style="margin-bottom: 20px;">Contribución por Rango</h3>
                     <div id="rangeChart"></div>
                 </div>
 
-                <table class="summary-table" id="rangeDetailTable">
-                    <!-- Se llenará con JavaScript -->
-                </table>
-            </div>
-
-            <!-- Slide 4: Análisis por Grupos - Participación Porcentual -->
-            <div class="slide" id="slide4">
-                <h2 class="slide-title">📑 Participación por Grupos Estratégicos</h2>
-                
-                <div class="stats-container" id="groupStats">
-                    <!-- Se llenará con JavaScript -->
-                </div>
-
-                <div class="chart-container">
-                    <h3 style="margin-bottom: 20px; color: #1e3c72;">Distribución Porcentual por Grupo</h3>
-                    <div id="groupChart"></div>
-                </div>
-
-                <table class="summary-table" id="groupSummaryTable">
-                    <!-- Se llenará con JavaScript -->
-                </table>
+                <table class="summary-table" id="rangeTable"></table>
             </div>
 
             <!-- Slide 5: Convenios Cero y Bajo Impacto -->
             <div class="slide" id="slide5">
-                <h2 class="slide-title">⚠️ Convenios sin Movimiento - Oportunidades de Mejora</h2>
+                <h2 class="slide-title">⚠️ CONVENIOS SIN MOVIMIENTO O BAJO IMPACTO</h2>
                 
                 <div class="stats-container">
                     <div class="stat-box">
                         <div class="number" id="zeroCount">0</div>
                         <div class="percentage" id="zeroPercentage">0%</div>
                         <div class="label">Convenios en Cero</div>
-                        <div class="sub-value">Sin asignación</div>
                     </div>
                     <div class="stat-box">
-                        <div class="number" id="lowImpactCount">0</div>
-                        <div class="percentage" id="lowImpactPercentage">0%</div>
-                        <div class="label">Bajo Impacto (&lt; 0.1%)</div>
-                        <div class="sub-value">Menos de $56,129</div>
+                        <div class="number" id="lowCount">0</div>
+                        <div class="percentage" id="lowPercentage">0%</div>
+                        <div class="label">Menos de $50,000</div>
                     </div>
                     <div class="stat-box">
-                        <div class="number" id="mediumImpactCount">0</div>
-                        <div class="percentage" id="mediumImpactPercentage">0%</div>
-                        <div class="label">Impacto Medio</div>
-                        <div class="sub-value">0.1% - 1%</div>
+                        <div class="number" id="mediumCount">0</div>
+                        <div class="percentage" id="mediumPercentage">0%</div>
+                        <div class="label">$50,000 - $500,000</div>
                     </div>
                 </div>
 
-                <div class="cards-grid" id="zeroConvenios">
-                    <!-- Se llenará con JavaScript -->
-                </div>
+                <div class="cards-grid" id="lowImpactConvenios"></div>
             </div>
         </div>
 
         <div class="footer">
-            <p>Información Confidencial - Análisis Porcentual para Decisión de Incremento al Techo</p>
-            <p class="confidential">Los porcentajes están calculados sobre el total general de $56,128,871.66</p>
+            <p>Información Confidencial - 38 Convenios Analizados Individualmente</p>
+            <p class="confidential">Total General: $56,128,871.66 | Cada convenio muestra su % de participación</p>
         </div>
     </div>
 
     <script>
-        // Datos proporcionados
+        // DATOS ORIGINALES - SIN AGRUPACIONES ARTIFICIALES
         const conveniosData = [
-            { nombre: "115 CONVENIO ECHAENDIA", valor: 772546.25, grupo: "Convenios Numericos" },
-            { nombre: "116 CONVENIO PIÑAS", valor: 1114035.56, grupo: "Convenios Numericos" },
-            { nombre: "117 CONVENIO MANTA", valor: 0, grupo: "Convenios Numericos" },
-            { nombre: "118 CONVENIO CELICA", valor: 13013.3, grupo: "Convenios Numericos" },
-            { nombre: "119 CONVENIO PORTOVIEJO", valor: 13199.29, grupo: "Convenios Numericos" },
-            { nombre: "120 CONVENIO ABUDABI", valor: 0, grupo: "Convenios Numericos" },
-            { nombre: "ALIANZAS Y NEGOCIOS", valor: 1364254.5, grupo: "Alianzas" },
-            { nombre: "BDE CPT", valor: 1432404.13, grupo: "BDE" },
-            { nombre: "BDE ESTRATÉGICO", valor: 932590.32, grupo: "BDE" },
-            { nombre: "BEJUCO", valor: 335561.45, grupo: "Especiales" },
-            { nombre: "CALIDAD INSTITUCIONAL", valor: 2075499.68, grupo: "Institucional" },
-            { nombre: "CHILLANES", valor: 957752.54, grupo: "Especiales" },
-            { nombre: "CONVENIO 025-22 (INFANCIA CON FUTURO - KIT DE SANEAMIENTOS)", valor: 1202209.64, grupo: "Convenios" },
-            { nombre: "CONVENIO 035-2023 (VIVIENDAS CANTÓN ALAUSI)", valor: 309943.51, grupo: "Convenios" },
-            { nombre: "CONVENIO 039-2023 (VIVIENDAS CANTÓN GUABO)", valor: 192356.06, grupo: "Convenios" },
-            { nombre: "CONVENIO 040-2023 (VIVIENDAS CANTÓN PASAJE EL ORO)", valor: 945154.56, grupo: "Convenios" },
-            { nombre: "CONVENIO 045-2023 (VIVIENDAS CANTÓN MIRA)", valor: 49864.34, grupo: "Convenios" },
-            { nombre: "CONVENIO 1A AFD 2024", valor: 3103782.22, grupo: "AFD" },
-            { nombre: "CONVENIO CHONE", valor: 1009896, grupo: "Especiales" },
-            { nombre: "CONVENIO CHUNCHI - MIDUVI", valor: 55119.06, grupo: "MIDUVI" },
-            { nombre: "CONVENIO ESMERALDAS - MIDUVI", valor: 1708092.09, grupo: "MIDUVI" },
-            { nombre: "CONVENIO GUAYAQUIL DE MIS AMORES OBRAS DE SANEAMIENTO", valor: 574353.35, grupo: "Especiales" },
-            { nombre: "CONVENIO MIDUVI 1A BID (2022) NUEVO PLAN DE VIVIENDA MACRO", valor: 1517887.05, grupo: "MIDUVI" },
-            { nombre: "CONVENIO MIDUVI 1B 2023 (Convenio 069-2023 , BABA Y ARCHIDONA)", valor: 4589372.92, grupo: "MIDUVI" },
-            { nombre: "CONVENIO PUCAYACU", valor: 118332.25, grupo: "Convenios" },
-            { nombre: "DIKAPARE", valor: 36127.59, grupo: "Especiales" },
-            { nombre: "MUSEO NACIONAL DEL ECUADOR MUNA", valor: 714492.7724, grupo: "Cultural" },
-            { nombre: "NUEVO CEIBOS", valor: 188683.14, grupo: "Especiales" },
-            { nombre: "NUEVO PILE", valor: 6734.97, grupo: "Especiales" },
-            { nombre: "SEGMENTO 1A (2019)", valor: 260154.85, grupo: "Segmentos" },
-            { nombre: "SEGMENTO 1A (2020)", valor: 1222291.59, grupo: "Segmentos" },
-            { nombre: "SEGMENTO 1B (AFD 2021)", valor: 3297864.77, grupo: "Segmentos" },
-            { nombre: "SEGMENTO 1B (CDB-1)", valor: 263259.61, grupo: "Segmentos" },
-            { nombre: "SEGMENTO 1B (CDB-2)", valor: 48206.37, grupo: "Segmentos" },
-            { nombre: "121 CONVENIO UNIVERSIDAD PÚBLICA DE SANTO DOMINGO DE LOS TSÁCHILAS", valor: 5638691, grupo: "Convenios Numericos" },
-            { nombre: "123 CONVENIO ESMERALDAS", valor: 2622587.65, grupo: "Convenios Numericos" },
-            { nombre: "124 CONVENIO 1A 2025", valor: 17442557.28, grupo: "Convenios Numericos" }
+            { nombre: "115 CONVENIO ECHAENDIA", valor: 772546.25 },
+            { nombre: "116 CONVENIO PIÑAS", valor: 1114035.56 },
+            { nombre: "117 CONVENIO MANTA", valor: 0 },
+            { nombre: "118 CONVENIO CELICA", valor: 13013.3 },
+            { nombre: "119 CONVENIO PORTOVIEJO", valor: 13199.29 },
+            { nombre: "120 CONVENIO ABUDABI", valor: 0 },
+            { nombre: "ALIANZAS Y NEGOCIOS", valor: 1364254.5 },
+            { nombre: "BDE CPT", valor: 1432404.13 },
+            { nombre: "BDE ESTRATÉGICO", valor: 932590.32 },
+            { nombre: "BEJUCO", valor: 335561.45 },
+            { nombre: "CALIDAD INSTITUCIONAL", valor: 2075499.68 },
+            { nombre: "CHILLANES", valor: 957752.54 },
+            { nombre: "CONVENIO 025-22 (INFANCIA CON FUTURO - KIT DE SANEAMIENTOS)", valor: 1202209.64 },
+            { nombre: "CONVENIO 035-2023 (VIVIENDAS CANTÓN ALAUSI)", valor: 309943.51 },
+            { nombre: "CONVENIO 039-2023 (VIVIENDAS CANTÓN GUABO)", valor: 192356.06 },
+            { nombre: "CONVENIO 040-2023 (VIVIENDAS CANTÓN PASAJE EL ORO)", valor: 945154.56 },
+            { nombre: "CONVENIO 045-2023 (VIVIENDAS CANTÓN MIRA)", valor: 49864.34 },
+            { nombre: "CONVENIO 1A AFD 2024", valor: 3103782.22 },
+            { nombre: "CONVENIO CHONE", valor: 1009896 },
+            { nombre: "CONVENIO CHUNCHI - MIDUVI", valor: 55119.06 },
+            { nombre: "CONVENIO ESMERALDAS - MIDUVI", valor: 1708092.09 },
+            { nombre: "CONVENIO GUAYAQUIL DE MIS AMORES OBRAS DE SANEAMIENTO", valor: 574353.35 },
+            { nombre: "CONVENIO MIDUVI 1A BID (2022) NUEVO PLAN DE VIVIENDA MACRO", valor: 1517887.05 },
+            { nombre: "CONVENIO MIDUVI 1B 2023 (Convenio 069-2023 , BABA Y ARCHIDONA)", valor: 4589372.92 },
+            { nombre: "CONVENIO PUCAYACU", valor: 118332.25 },
+            { nombre: "DIKAPARE", valor: 36127.59 },
+            { nombre: "MUSEO NACIONAL DEL ECUADOR MUNA", valor: 714492.7724 },
+            { nombre: "NUEVO CEIBOS", valor: 188683.14 },
+            { nombre: "NUEVO PILE", valor: 6734.97 },
+            { nombre: "SEGMENTO 1A (2019)", valor: 260154.85 },
+            { nombre: "SEGMENTO 1A (2020)", valor: 1222291.59 },
+            { nombre: "SEGMENTO 1B (AFD 2021)", valor: 3297864.77 },
+            { nombre: "SEGMENTO 1B (CDB-1)", valor: 263259.61 },
+            { nombre: "SEGMENTO 1B (CDB-2)", valor: 48206.37 },
+            { nombre: "121 CONVENIO UNIVERSIDAD PÚBLICA DE SANTO DOMINGO DE LOS TSÁCHILAS", valor: 5638691 },
+            { nombre: "123 CONVENIO ESMERALDAS", valor: 2622587.65 },
+            { nombre: "124 CONVENIO 1A 2025", valor: 17442557.28 }
         ];
 
         let currentView = 1;
         const totalViews = 5;
+
+        // Calcular total general
+        const totalGeneral = conveniosData.reduce((total, item) => total + item.valor, 0);
 
         // Función para formatear moneda
         function formatCurrency(value) {
@@ -639,19 +591,16 @@
         }
 
         // Función para calcular porcentaje
-        function calculatePercentage(value, total) {
-            return ((value / total) * 100).toFixed(2);
+        function calculatePercentage(value) {
+            return ((value / totalGeneral) * 100).toFixed(2);
         }
 
         // Función para formatear porcentaje
-        function formatPercentage(value, total) {
-            return calculatePercentage(value, total) + '%';
+        function formatPercentage(value) {
+            return calculatePercentage(value) + '%';
         }
 
-        // Calcular total general
-        const totalGeneral = conveniosData.reduce((total, item) => total + item.valor, 0);
-
-        // Función para cambiar de vista
+        // Cambiar de vista
         function changeView(direction) {
             const newView = currentView + direction;
             
@@ -662,11 +611,11 @@
                 currentView = newView;
                 
                 const viewNames = [
-                    'Vista General con Porcentajes',
+                    'Todos los Convenios',
+                    'Top 10 Convenios',
                     'Análisis de Concentración',
                     'Distribución por Rangos',
-                    'Participación por Grupos',
-                    'Convenios sin Movimiento'
+                    'Convenios Bajo Impacto'
                 ];
                 document.getElementById('slideIndicator').textContent = `${viewNames[currentView-1]} (${currentView} de ${totalViews})`;
                 
@@ -678,26 +627,22 @@
         // Inicializar todas las vistas
         function initializeViews() {
             renderQuickStats();
-            renderTop5Percentage();
-            renderPercentageDistribution();
+            renderAllConvenios();
+            renderTopConvenios();
             renderParetoAnalysis();
             renderRangeAnalysis();
-            renderGroupAnalysis();
-            renderZeroConvenios();
+            renderLowImpactConvenios();
         }
 
-        // Renderizar estadísticas rápidas con porcentajes
+        // Vista 1: Estadísticas rápidas
         function renderQuickStats() {
             const totalConvenios = conveniosData.length;
             const conValor = conveniosData.filter(c => c.valor > 0).length;
             const sinValor = conveniosData.filter(c => c.valor === 0).length;
             const promedio = totalGeneral / totalConvenios;
             
-            // Calcular convenios significativos (>1% del total)
-            const significativos = conveniosData.filter(c => (c.valor / totalGeneral) > 0.01).length;
-            const valorSignificativos = conveniosData
-                .filter(c => (c.valor / totalGeneral) > 0.01)
-                .reduce((sum, c) => sum + c.valor, 0);
+            // Convenio más grande
+            const maxConvenio = conveniosData.reduce((max, c) => c.valor > max.valor ? c : max, conveniosData[0]);
 
             const statsContainer = document.getElementById('quickStats');
             statsContainer.innerHTML = `
@@ -708,40 +653,72 @@
                 </div>
                 <div class="stat-box">
                     <div class="number">${conValor}</div>
-                    <div class="percentage">${formatPercentage(conValor, totalConvenios)}</div>
-                    <div class="label">Con Valor Asignado</div>
-                    <div class="sub-value">${formatCurrency(conValor > 0 ? totalGeneral : 0)}</div>
+                    <div class="percentage">${((conValor/totalConvenios)*100).toFixed(1)}%</div>
+                    <div class="label">Con Valor</div>
                 </div>
                 <div class="stat-box">
                     <div class="number">${sinValor}</div>
-                    <div class="percentage">${formatPercentage(sinValor, totalConvenios)}</div>
-                    <div class="label">Sin Valor (Cero)</div>
-                    <div class="sub-value">Requieren atención</div>
-                </div>
-                <div class="stat-box">
-                    <div class="number">${significativos}</div>
-                    <div class="percentage">${formatPercentage(significativos, totalConvenios)}</div>
-                    <div class="label">Convenios >1%</div>
-                    <div class="sub-value">${formatPercentage(valorSignificativos, totalGeneral)} del valor</div>
+                    <div class="percentage">${((sinValor/totalConvenios)*100).toFixed(1)}%</div>
+                    <div class="label">En Cero</div>
                 </div>
                 <div class="stat-box">
                     <div class="number">${formatCurrency(promedio)}</div>
-                    <div class="percentage">100%</div>
-                    <div class="label">Promedio por Convenio</div>
+                    <div class="percentage">Promedio</div>
+                    <div class="label">Por Convenio</div>
+                </div>
+                <div class="stat-box">
+                    <div class="number">${maxConvenio.nombre.substring(0,15)}...</div>
+                    <div class="percentage">${formatPercentage(maxConvenio.valor)}</div>
+                    <div class="label">Convenio Mayor</div>
                 </div>
             `;
         }
 
-        // Renderizar Top 5 con porcentajes
-        function renderTop5Percentage() {
-            const container = document.getElementById('top5Percentage');
+        // Vista 1: Todos los convenios
+        function renderAllConvenios() {
+            const container = document.getElementById('allConvenios');
             
-            const top5 = [...conveniosData]
+            // Ordenar por valor descendente
+            const sorted = [...conveniosData].sort((a, b) => b.valor - a.valor);
+            
+            container.innerHTML = sorted.map(item => {
+                const percentage = (item.valor / totalGeneral) * 100;
+                let cardClass = 'card';
+                if (item.valor > 1000000) cardClass += ' highlight';
+                if (item.valor === 0) cardClass += ' zero';
+                
+                return `
+                    <div class="${cardClass}">
+                        <div class="card-title tooltip">
+                            ${item.nombre}
+                            <span class="tooltiptext">${item.nombre}</span>
+                        </div>
+                        <div class="card-value ${item.valor === 0 ? 'negative' : ''}">
+                            ${formatCurrency(item.valor)}
+                        </div>
+                        <div class="card-percentage">${percentage.toFixed(2)}% del total</div>
+                        <div class="percentage-bar">
+                            <div class="percentage-fill" style="width: ${percentage}%"></div>
+                        </div>
+                        <div class="card-footer">
+                            #${sorted.indexOf(item) + 1} de ${sorted.length} | 
+                            ${percentage > 10 ? '🔴 Alto Impacto' : percentage > 5 ? '🟡 Impacto Medio' : '🟢 Impacto Bajo'}
+                        </div>
+                    </div>
+                `;
+            }).join('');
+        }
+
+        // Vista 2: Top 10 convenios
+        function renderTopConvenios() {
+            const container = document.getElementById('topConvenios');
+            
+            const top10 = [...conveniosData]
                 .filter(c => c.valor > 0)
                 .sort((a, b) => b.valor - a.valor)
-                .slice(0, 5);
+                .slice(0, 10);
             
-            container.innerHTML = top5.map((item, index) => {
+            container.innerHTML = top10.map((item, index) => {
                 const percentage = (item.valor / totalGeneral) * 100;
                 return `
                     <div class="card highlight">
@@ -752,105 +729,84 @@
                             <div class="percentage-fill" style="width: ${percentage}%"></div>
                         </div>
                         <div class="card-footer">
-                            Grupo: ${item.grupo} | Impacto: ${percentage > 10 ? '🔴 Alto' : percentage > 5 ? '🟡 Medio' : '🟢 Bajo'}
+                            Acumulado: ${top10.slice(0, index + 1).reduce((sum, c) => sum + (c.valor/totalGeneral)*100, 0).toFixed(2)}%
                         </div>
                     </div>
                 `;
             }).join('');
-        }
 
-        // Renderizar distribución porcentual
-        function renderPercentageDistribution() {
-            const container = document.getElementById('percentageDistribution');
+            // Gráfico Top 10 vs Resto
+            const top10Total = top10.reduce((sum, c) => sum + c.valor, 0);
+            const restoTotal = totalGeneral - top10Total;
             
-            // Ordenar y calcular porcentaje acumulado
-            const sorted = [...conveniosData]
-                .filter(c => c.valor > 0)
-                .sort((a, b) => b.valor - a.valor);
-            
-            let acumulado = 0;
-            const distribution = sorted.map((item, index) => {
-                const porcentaje = (item.valor / totalGeneral) * 100;
-                acumulado += porcentaje;
-                return { ...item, porcentaje, acumulado, index: index + 1 };
-            });
-
-            container.innerHTML = distribution.slice(0, 15).map(item => `
+            document.getElementById('top10Chart').innerHTML = `
                 <div class="chart-bar">
-                    <div class="label tooltip">
-                        #${item.index} ${item.nombre.substring(0, 30)}...
-                        <span class="tooltiptext">${item.nombre}</span>
-                    </div>
+                    <div class="label">Top 10 Convenios</div>
                     <div class="bar-container">
-                        <div class="bar" style="width: ${item.porcentaje}%;">
-                            ${item.porcentaje > 3 ? item.porcentaje.toFixed(1) + '%' : ''}
+                        <div class="bar" style="width: ${(top10Total/totalGeneral)*100}%;">
+                            ${((top10Total/totalGeneral)*100).toFixed(1)}%
                         </div>
                     </div>
-                    <div class="value">${formatCurrency(item.valor)}</div>
-                    <div class="percentage">${item.porcentaje.toFixed(2)}%</div>
+                    <div class="value">${formatCurrency(top10Total)}</div>
                 </div>
-            `).join('');
-
-            // Agregar línea de acumulado
-            container.innerHTML += `
-                <div style="margin-top: 30px; padding: 20px; background: #e8f4fd; border-radius: 10px;">
-                    <h4 style="color: #1e3c72; margin-bottom: 10px;">📊 Análisis de Concentración:</h4>
-                    <p>Los 5 principales convenios representan el <strong>${distribution.slice(0,5).reduce((sum,item) => sum + item.porcentaje, 0).toFixed(2)}%</strong> del total</p>
-                    <p>Los 10 principales convenios representan el <strong>${distribution.slice(0,10).reduce((sum,item) => sum + item.porcentaje, 0).toFixed(2)}%</strong> del total</p>
+                <div class="chart-bar">
+                    <div class="label">Resto (28 Convenios)</div>
+                    <div class="bar-container">
+                        <div class="bar" style="width: ${(restoTotal/totalGeneral)*100}%;">
+                            ${((restoTotal/totalGeneral)*100).toFixed(1)}%
+                        </div>
+                    </div>
+                    <div class="value">${formatCurrency(restoTotal)}</div>
                 </div>
             `;
         }
 
-        // Renderizar análisis de Pareto
+        // Vista 3: Análisis de Pareto
         function renderParetoAnalysis() {
             const sorted = [...conveniosData]
                 .filter(c => c.valor > 0)
                 .sort((a, b) => b.valor - a.valor);
             
+            const top1 = sorted[0];
             const top3 = sorted.slice(0, 3);
             const top5 = sorted.slice(0, 5);
             const top10 = sorted.slice(0, 10);
             
+            const top1Value = top1.valor;
             const top3Value = top3.reduce((sum, c) => sum + c.valor, 0);
             const top5Value = top5.reduce((sum, c) => sum + c.valor, 0);
             const top10Value = top10.reduce((sum, c) => sum + c.valor, 0);
             
+            document.getElementById('top1Name').textContent = top1.nombre.substring(0, 30) + '...';
+            document.getElementById('top1Percentage').textContent = formatPercentage(top1Value);
+            document.getElementById('top1Value').textContent = formatCurrency(top1Value);
+            
             document.getElementById('top3Count').textContent = top3.length;
-            document.getElementById('top3Percentage').textContent = formatPercentage(top3Value, totalGeneral);
+            document.getElementById('top3Percentage').textContent = formatPercentage(top3Value);
             document.getElementById('top3Value').textContent = formatCurrency(top3Value);
             
             document.getElementById('top5Count').textContent = top5.length;
-            document.getElementById('top5Percentage').textContent = formatPercentage(top5Value, totalGeneral);
+            document.getElementById('top5Percentage').textContent = formatPercentage(top5Value);
             document.getElementById('top5Value').textContent = formatCurrency(top5Value);
             
             document.getElementById('top10Count').textContent = top10.length;
-            document.getElementById('top10Percentage').textContent = formatPercentage(top10Value, totalGeneral);
+            document.getElementById('top10Percentage').textContent = formatPercentage(top10Value);
             document.getElementById('top10Value').textContent = formatCurrency(top10Value);
 
-            // Gráfico de Pareto
-            const chartContainer = document.getElementById('paretoChart');
-            
+            // Tabla Pareto
             let acumulado = 0;
             const paretoData = sorted.slice(0, 15).map((item, index) => {
                 const porcentaje = (item.valor / totalGeneral) * 100;
                 acumulado += porcentaje;
-                return { index: index + 1, nombre: item.nombre, valor: item.valor, porcentaje, acumulado };
+                return { 
+                    index: index + 1, 
+                    nombre: item.nombre, 
+                    valor: item.valor, 
+                    porcentaje,
+                    acumulado 
+                };
             });
 
-            chartContainer.innerHTML = paretoData.map(item => `
-                <div class="chart-bar">
-                    <div class="label">#${item.index}</div>
-                    <div class="bar-container">
-                        <div class="bar" style="width: ${item.porcentaje}%; background: #007bff;">
-                            ${item.porcentaje > 2 ? item.porcentaje.toFixed(1) + '%' : ''}
-                        </div>
-                    </div>
-                    <div class="value">${item.porcentaje.toFixed(2)}%</div>
-                    <div class="percentage">Acum: ${item.acumulado.toFixed(2)}%</div>
-                </div>
-            `).join('');
-
-            // Tabla Pareto
             const tableContainer = document.getElementById('paretoTable');
             tableContainer.innerHTML = `
                 <thead>
@@ -866,14 +822,18 @@
                     ${paretoData.map(item => `
                         <tr>
                             <td>${item.index}</td>
-                            <td>${item.nombre.substring(0, 40)}${item.nombre.length > 40 ? '...' : ''}</td>
+                            <td class="tooltip">
+                                ${item.nombre.substring(0, 40)}${item.nombre.length > 40 ? '...' : ''}
+                                <span class="tooltiptext">${item.nombre}</span>
+                            </td>
                             <td>${formatCurrency(item.valor)}</td>
                             <td class="percentage-column">${item.porcentaje.toFixed(2)}%</td>
                             <td class="percentage-column">${item.acumulado.toFixed(2)}%</td>
                         </tr>
                     `).join('')}
                     <tr class="total-row">
-                        <td colspan="3">Resto de convenios (${sorted.length - 15})</td>
+                        <td colspan="2">Resto de convenios (${sorted.length - 15})</td>
+                        <td>${formatCurrency(totalGeneral - sorted.slice(0,15).reduce((sum,c) => sum + c.valor, 0))}</td>
                         <td class="percentage-column">${(100 - acumulado).toFixed(2)}%</td>
                         <td class="percentage-column">100%</td>
                     </tr>
@@ -881,12 +841,12 @@
             `;
         }
 
-        // Renderizar análisis por rangos
+        // Vista 4: Análisis por rangos
         function renderRangeAnalysis() {
             const rangos = [
-                { min: 0, max: 0, nombre: "Sin Valor ($0)" },
-                { min: 0.01, max: 100000, nombre: "Menos de $100K" },
-                { min: 100000.01, max: 500000, nombre: "$100K - $500K" },
+                { min: 0, max: 0, nombre: "CERO ($0)" },
+                { min: 0.01, max: 50000, nombre: "Menos de $50K" },
+                { min: 50000.01, max: 500000, nombre: "$50K - $500K" },
                 { min: 500000.01, max: 1000000, nombre: "$500K - $1M" },
                 { min: 1000000.01, max: 5000000, nombre: "$1M - $5M" },
                 { min: 5000000.01, max: Infinity, nombre: "Más de $5M" }
@@ -902,42 +862,37 @@
                     ...rango,
                     count: convenios.length,
                     total: total,
-                    porcentajeDelTotal: (total / totalGeneral) * 100,
-                    porcentajeEnCantidad: (convenios.length / conveniosData.length) * 100,
-                    items: convenios
+                    porcentajeValor: (total / totalGeneral) * 100,
+                    porcentajeCantidad: (convenios.length / conveniosData.length) * 100
                 };
             });
 
             // Stats por rango
-            const statsContainer = document.getElementById('rangeStats');
-            statsContainer.innerHTML = rangeStats.map(r => `
+            document.getElementById('rangeStats').innerHTML = rangeStats.map(r => `
                 <div class="stat-box">
                     <div class="number">${r.count}</div>
-                    <div class="percentage">${r.porcentajeEnCantidad.toFixed(1)}%</div>
+                    <div class="percentage">${r.porcentajeCantidad.toFixed(1)}%</div>
                     <div class="label">${r.nombre}</div>
                     <div class="sub-value">${formatCurrency(r.total)}</div>
-                    <div class="sub-value" style="color: #007bff;">${r.porcentajeDelTotal.toFixed(2)}% del valor</div>
+                    <div class="sub-value" style="color: #007bff;">${r.porcentajeValor.toFixed(2)}% del valor</div>
                 </div>
             `).join('');
 
             // Gráfico de rangos
-            const chartContainer = document.getElementById('rangeChart');
-            chartContainer.innerHTML = rangeStats.map(r => `
+            document.getElementById('rangeChart').innerHTML = rangeStats.map(r => `
                 <div class="chart-bar">
                     <div class="label">${r.nombre}</div>
                     <div class="bar-container">
-                        <div class="bar" style="width: ${r.porcentajeDelTotal}%;">
-                            ${r.porcentajeDelTotal > 5 ? r.porcentajeDelTotal.toFixed(1) + '%' : ''}
+                        <div class="bar" style="width: ${r.porcentajeValor}%;">
+                            ${r.porcentajeValor > 5 ? r.porcentajeValor.toFixed(1) + '%' : ''}
                         </div>
                     </div>
                     <div class="value">${formatCurrency(r.total)}</div>
-                    <div class="percentage">${r.porcentajeDelTotal.toFixed(2)}%</div>
                 </div>
             `).join('');
 
-            // Tabla detalle
-            const tableContainer = document.getElementById('rangeDetailTable');
-            tableContainer.innerHTML = `
+            // Tabla de rangos
+            document.getElementById('rangeTable').innerHTML = `
                 <thead>
                     <tr>
                         <th>Rango</th>
@@ -952,9 +907,9 @@
                         <tr>
                             <td><strong>${r.nombre}</strong></td>
                             <td>${r.count}</td>
-                            <td class="percentage-column">${r.porcentajeEnCantidad.toFixed(2)}%</td>
+                            <td class="percentage-column">${r.porcentajeCantidad.toFixed(2)}%</td>
                             <td>${formatCurrency(r.total)}</td>
-                            <td class="percentage-column">${r.porcentajeDelTotal.toFixed(2)}%</td>
+                            <td class="percentage-column">${r.porcentajeValor.toFixed(2)}%</td>
                         </tr>
                     `).join('')}
                     <tr class="total-row">
@@ -968,148 +923,52 @@
             `;
         }
 
-        // Renderizar análisis por grupos
-        function renderGroupAnalysis() {
-            // Agrupar por categoría
-            const grupos = {};
-            conveniosData.forEach(item => {
-                if (!grupos[item.grupo]) {
-                    grupos[item.grupo] = {
-                        nombre: item.grupo,
-                        count: 0,
-                        total: 0,
-                        items: []
-                    };
-                }
-                grupos[item.grupo].count++;
-                grupos[item.grupo].total += item.valor;
-                grupos[item.grupo].items.push(item);
-            });
+        // Vista 5: Convenios bajo impacto
+        function renderLowImpactConvenios() {
+            const cero = conveniosData.filter(c => c.valor === 0);
+            const bajo = conveniosData.filter(c => c.valor > 0 && c.valor < 50000);
+            const medio = conveniosData.filter(c => c.valor >= 50000 && c.valor < 500000);
 
-            const gruposArray = Object.values(grupos).sort((a, b) => b.total - a.total);
+            document.getElementById('zeroCount').textContent = cero.length;
+            document.getElementById('zeroPercentage').textContent = formatPercentage(cero.length, conveniosData.length);
+            
+            document.getElementById('lowCount').textContent = bajo.length;
+            document.getElementById('lowPercentage').textContent = formatPercentage(bajo.length, conveniosData.length);
+            
+            document.getElementById('mediumCount').textContent = medio.length;
+            document.getElementById('mediumPercentage').textContent = formatPercentage(medio.length, conveniosData.length);
 
-            // Stats por grupo
-            const statsContainer = document.getElementById('groupStats');
-            statsContainer.innerHTML = gruposArray.map(g => {
-                const porcentajeValor = (g.total / totalGeneral) * 100;
-                const porcentajeCantidad = (g.count / conveniosData.length) * 100;
+            const todosBajoImpacto = [...cero, ...bajo, ...medio].sort((a, b) => b.valor - a.valor);
+            
+            document.getElementById('lowImpactConvenios').innerHTML = todosBajoImpacto.map(item => {
+                const percentage = (item.valor / totalGeneral) * 100;
                 return `
-                    <div class="stat-box">
-                        <div class="number">${g.count}</div>
-                        <div class="percentage">${porcentajeCantidad.toFixed(1)}%</div>
-                        <div class="label">${g.nombre}</div>
-                        <div class="sub-value">${formatCurrency(g.total)}</div>
-                        <div class="sub-value" style="color: #007bff;">${porcentajeValor.toFixed(2)}% del total</div>
-                    </div>
-                `;
-            }).join('');
-
-            // Gráfico por grupo
-            const chartContainer = document.getElementById('groupChart');
-            chartContainer.innerHTML = gruposArray.map(g => {
-                const porcentaje = (g.total / totalGeneral) * 100;
-                return `
-                    <div class="chart-bar">
-                        <div class="label">${g.nombre}</div>
-                        <div class="bar-container">
-                            <div class="bar" style="width: ${porcentaje}%;">
-                                ${porcentaje > 5 ? porcentaje.toFixed(1) + '%' : ''}
-                            </div>
+                    <div class="card ${item.valor === 0 ? 'zero' : ''}">
+                        <div class="card-title tooltip">
+                            ${item.nombre}
+                            <span class="tooltiptext">${item.nombre}</span>
                         </div>
-                        <div class="value">${formatCurrency(g.total)}</div>
-                        <div class="percentage">${porcentaje.toFixed(2)}%</div>
+                        <div class="card-value ${item.valor === 0 ? 'negative' : ''}">
+                            ${formatCurrency(item.valor)}
+                        </div>
+                        <div class="card-percentage">
+                            ${item.valor === 0 ? '🚫 SIN ASIGNACIÓN' : percentage.toFixed(3) + '% del total'}
+                        </div>
                     </div>
                 `;
             }).join('');
-
-            // Tabla resumen por grupo
-            const tableContainer = document.getElementById('groupSummaryTable');
-            tableContainer.innerHTML = `
-                <thead>
-                    <tr>
-                        <th>Grupo</th>
-                        <th>Convenios</th>
-                        <th>% Cantidad</th>
-                        <th>Total</th>
-                        <th>% del Total</th>
-                        <th>Promedio</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    ${gruposArray.map(g => {
-                        const porcentajeValor = (g.total / totalGeneral) * 100;
-                        const porcentajeCantidad = (g.count / conveniosData.length) * 100;
-                        return `
-                            <tr>
-                                <td><strong>${g.nombre}</strong></td>
-                                <td>${g.count}</td>
-                                <td class="percentage-column">${porcentajeCantidad.toFixed(2)}%</td>
-                                <td>${formatCurrency(g.total)}</td>
-                                <td class="percentage-column">${porcentajeValor.toFixed(2)}%</td>
-                                <td>${formatCurrency(g.total / g.count)}</td>
-                            </tr>
-                        `;
-                    }).join('')}
-                    <tr class="total-row">
-                        <td>TOTAL</td>
-                        <td>${conveniosData.length}</td>
-                        <td class="percentage-column">100%</td>
-                        <td>${formatCurrency(totalGeneral)}</td>
-                        <td class="percentage-column">100%</td>
-                        <td>${formatCurrency(totalGeneral / conveniosData.length)}</td>
-                    </tr>
-                </tbody>
-            `;
-        }
-
-        // Renderizar convenios cero y bajo impacto
-        function renderZeroConvenios() {
-            const zeroConvenios = conveniosData.filter(c => c.valor === 0);
-            const lowImpact = conveniosData.filter(c => c.valor > 0 && (c.valor / totalGeneral) < 0.001);
-            const mediumImpact = conveniosData.filter(c => {
-                const porcentaje = (c.valor / totalGeneral) * 100;
-                return porcentaje >= 0.1 && porcentaje < 1;
-            });
-
-            document.getElementById('zeroCount').textContent = zeroConvenios.length;
-            document.getElementById('zeroPercentage').textContent = formatPercentage(zeroConvenios.length, conveniosData.length);
-            
-            document.getElementById('lowImpactCount').textContent = lowImpact.length;
-            document.getElementById('lowImpactPercentage').textContent = formatPercentage(lowImpact.length, conveniosData.length);
-            
-            document.getElementById('mediumImpactCount').textContent = mediumImpact.length;
-            document.getElementById('mediumImpactPercentage').textContent = formatPercentage(mediumImpact.length, conveniosData.length);
-
-            const container = document.getElementById('zeroConvenios');
-            
-            const todosBajoImpacto = [...zeroConvenios, ...lowImpact];
-            
-            container.innerHTML = todosBajoImpacto.map(item => `
-                <div class="card ${item.valor === 0 ? 'zero' : ''}">
-                    <div class="card-title">${item.nombre}</div>
-                    <div class="card-value ${item.valor === 0 ? 'negative' : ''}">${formatCurrency(item.valor)}</div>
-                    <div class="card-percentage">
-                        ${item.valor === 0 ? '⚠️ Sin asignación' : ((item.valor / totalGeneral) * 100).toFixed(3) + '% del total'}
-                    </div>
-                    <div class="card-footer">Grupo: ${item.grupo}</div>
-                </div>
-            `).join('');
         }
 
         // Event listeners para teclado
         document.addEventListener('keydown', function(event) {
-            if (event.key === 'ArrowLeft') {
-                changeView(-1);
-            } else if (event.key === 'ArrowRight') {
-                changeView(1);
-            }
+            if (event.key === 'ArrowLeft') changeView(-1);
+            else if (event.key === 'ArrowRight') changeView(1);
         });
 
-        // Inicializar todo cuando carga la página
+        // Inicializar
         window.onload = function() {
             initializeViews();
             document.getElementById('prevBtn').disabled = true;
-            document.getElementById('slideIndicator').textContent = 'Vista General con Porcentajes (1 de 5)';
         };
     </script>
 </body>
