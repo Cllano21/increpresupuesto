@@ -3,9 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Informe de Convenios - Datos Actualizados</title>
+    <title>Informe de Convenios - Nuevos primero</title>
     <style>
-        /* (Mantengo los mismos estilos que en la respuesta anterior) */
+        /* (Mantengo los mismos estilos que antes) */
         * {
             margin: 0;
             padding: 0;
@@ -441,7 +441,7 @@
 <body>
     <div class="container">
         <div class="header">
-            <h1>Informe de Convenios <small>Datos Actualizados - Incluye Nuevos Convenios</small></h1>
+            <h1>Informe de Convenios <small>Datos Actualizados - Nuevos Convenios Primero</small></h1>
             <div class="total-general">
                 <div class="label">TOTAL GENERAL DE CONVENIOS</div>
                 <div class="value" id="totalGeneral">$64,115,181.77</div>
@@ -450,7 +450,7 @@
         </div>
 
         <div class="navigation">
-            <span class="slide-indicator" id="slideIndicator">Vista General - Todos los Convenios</span>
+            <span class="slide-indicator" id="slideIndicator">Vista General - Nuevos primero</span>
             <div class="nav-buttons">
                 <button class="nav-btn prev" id="prevBtn" onclick="changeView(-1)">← Anterior</button>
                 <button class="nav-btn next" id="nextBtn" onclick="changeView(1)">Siguiente →</button>
@@ -458,9 +458,9 @@
         </div>
 
         <div class="slides-container" id="slidesContainer">
-            <!-- Slide 1: Todos los Convenios - Lista Completa -->
+            <!-- Slide 1: Todos los Convenios - Nuevos Primero -->
             <div class="slide active" id="slide1">
-                <h2 class="slide-title">📋 TODOS LOS CONVENIOS (38 Convenios)</h2>
+                <h2 class="slide-title">📋 TODOS LOS CONVENIOS (Nuevos destacados)</h2>
                 
                 <div class="stats-container" id="quickStats"></div>
 
@@ -555,7 +555,7 @@
 
         <div class="footer">
             <p>Información Confidencial - 38 Convenios Analizados Individualmente</p>
-            <p class="confidential">Total General: $64,115,181.77 | Los convenios marcados con 🆕 son nuevas incorporaciones</p>
+            <p class="confidential">Total General: $64,115,181.77 | Los convenios nuevos aparecen primero 🆕</p>
         </div>
     </div>
 
@@ -617,14 +617,11 @@
             }).format(value);
         }
 
-        // Función para calcular porcentaje
-        function calculatePercentage(value) {
-            return ((value / totalGeneral) * 100).toFixed(2);
-        }
-
-        // Función para formatear porcentaje
-        function formatPercentage(value) {
-            return calculatePercentage(value) + '%';
+        // Función para ordenar: primero nuevos (por valor descendente), luego resto (por valor descendente)
+        function sortConvenios(data) {
+            const nuevos = data.filter(c => c.nuevo).sort((a, b) => b.valor - a.valor);
+            const viejos = data.filter(c => !c.nuevo).sort((a, b) => b.valor - a.valor);
+            return [...nuevos, ...viejos];
         }
 
         // Cambiar de vista
@@ -638,7 +635,7 @@
                 currentView = newView;
                 
                 const viewNames = [
-                    'Todos los Convenios',
+                    'Todos los Convenios (Nuevos primero)',
                     'Top 10 Convenios',
                     'Análisis de Concentración',
                     'Distribución por Rangos',
@@ -702,14 +699,14 @@
             `;
         }
 
-        // Vista 1: Todos los convenios
+        // Vista 1: Todos los convenios con nuevos primero
         function renderAllConvenios() {
             const container = document.getElementById('allConvenios');
             
-            // Ordenar por valor descendente
-            const sorted = [...conveniosData].sort((a, b) => b.valor - a.valor);
+            // Ordenar: nuevos primero (por valor), luego resto (por valor)
+            const sorted = sortConvenios(conveniosData);
             
-            container.innerHTML = sorted.map(item => {
+            container.innerHTML = sorted.map((item, idx) => {
                 const percentage = (item.valor / totalGeneral) * 100;
                 let cardClass = 'card';
                 if (item.valor > 1000000) cardClass += ' highlight';
@@ -731,7 +728,7 @@
                             <div class="percentage-fill" style="width: ${percentage}%"></div>
                         </div>
                         <div class="card-footer">
-                            #${sorted.indexOf(item) + 1} de ${sorted.length} | 
+                            ${item.nuevo ? '🆕 NUEVO' : 'Existente'} | 
                             ${percentage > 10 ? '🔴 Alto Impacto' : percentage > 5 ? '🟡 Impacto Medio' : '🟢 Impacto Bajo'}
                         </div>
                     </div>
@@ -739,7 +736,7 @@
             }).join('');
         }
 
-        // Vista 2: Top 10 convenios
+        // Vista 2: Top 10 convenios (sin importar si son nuevos o no, solo valor)
         function renderTopConvenios() {
             const container = document.getElementById('topConvenios');
             
@@ -792,7 +789,7 @@
             `;
         }
 
-        // Vista 3: Análisis de Pareto
+        // Vista 3: Análisis de Pareto (igual, solo ordena por valor)
         function renderParetoAnalysis() {
             const sorted = [...conveniosData]
                 .filter(c => c.valor > 0)
@@ -873,7 +870,7 @@
             `;
         }
 
-        // Vista 4: Análisis por rangos
+        // Vista 4: Análisis por rangos (sin cambios, solo agrega ícono a nuevos)
         function renderRangeAnalysis() {
             const rangos = [
                 { min: 0, max: 0, nombre: "CERO ($0)" },
@@ -955,7 +952,7 @@
             `;
         }
 
-        // Vista 5: Convenios bajo impacto
+        // Vista 5: Convenios bajo impacto (con nuevos primero)
         function renderLowImpactConvenios() {
             const cero = conveniosData.filter(c => c.valor === 0);
             const bajo = conveniosData.filter(c => c.valor > 0 && c.valor < 50000);
@@ -970,9 +967,13 @@
             document.getElementById('mediumCount').textContent = medio.length;
             document.getElementById('mediumPercentage').textContent = ((medio.length / conveniosData.length) * 100).toFixed(1) + '%';
 
-            const todosBajoImpacto = [...cero, ...bajo, ...medio].sort((a, b) => b.valor - a.valor);
+            // Unimos y ordenamos: nuevos primero, luego por valor
+            const todosBajoImpacto = [...cero, ...bajo, ...medio];
+            const nuevos = todosBajoImpacto.filter(c => c.nuevo).sort((a, b) => b.valor - a.valor);
+            const viejos = todosBajoImpacto.filter(c => !c.nuevo).sort((a, b) => b.valor - a.valor);
+            const ordenados = [...nuevos, ...viejos];
             
-            document.getElementById('lowImpactConvenios').innerHTML = todosBajoImpacto.map(item => {
+            document.getElementById('lowImpactConvenios').innerHTML = ordenados.map(item => {
                 const percentage = (item.valor / totalGeneral) * 100;
                 return `
                     <div class="card ${item.valor === 0 ? 'zero' : ''} ${item.nuevo ? 'nuevo' : ''}">
@@ -990,6 +991,11 @@
                     </div>
                 `;
             }).join('');
+        }
+
+        // Helper para formato de porcentaje
+        function formatPercentage(value) {
+            return ((value / totalGeneral) * 100).toFixed(2) + '%';
         }
 
         // Event listeners para teclado
