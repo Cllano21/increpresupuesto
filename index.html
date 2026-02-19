@@ -450,7 +450,7 @@
         </div>
 
         <div class="navigation">
-            <span class="slide-indicator" id="slideIndicator">Vista General - Nuevos primero</span>
+            <span class="slide-indicator" id="slideIndicator">Todos los Convenios (Nuevos primero) (1 de 5)</span>
             <div class="nav-buttons">
                 <button class="nav-btn prev" id="prevBtn" onclick="changeView(-1)">← Anterior</button>
                 <button class="nav-btn next" id="nextBtn" onclick="changeView(1)">Siguiente →</button>
@@ -554,8 +554,8 @@
         </div>
 
         <div class="footer">
-            <p>Información Confidencial - 38 Convenios Analizados Individualmente</p>
-            <p class="confidential">Total General: $64,115,181.77 | Los convenios nuevos aparecen primero 🆕</p>
+            <p id="conveniosSummary">Información Confidencial - 0 Convenios Analizados Individualmente</p>
+            <p class="confidential" id="totalSummary">Total General: $0.00 | Los convenios nuevos aparecen primero 🆕</p>
         </div>
     </div>
 
@@ -650,6 +650,10 @@
 
         // Inicializar todas las vistas
         function initializeViews() {
+            document.getElementById('totalGeneral').textContent = formatCurrency(totalGeneral);
+            document.getElementById('conveniosSummary').textContent = `Información Confidencial - ${conveniosData.length} Convenios Analizados Individualmente`;
+            document.getElementById('totalSummary').textContent = `Total General: ${formatCurrency(totalGeneral)} | Los convenios nuevos aparecen primero 🆕`;
+
             renderQuickStats();
             renderAllConvenios();
             renderTopConvenios();
