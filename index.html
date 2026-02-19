@@ -3,8 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Informe de Convenios - Análisis Porcentual Individual</title>
+    <title>Informe de Convenios - Datos Actualizados</title>
     <style>
+        /* (Mantengo los mismos estilos que en la respuesta anterior) */
         * {
             margin: 0;
             padding: 0;
@@ -153,6 +154,7 @@
             box-shadow: 0 5px 15px rgba(0,0,0,0.1);
             border-left: 5px solid #007bff;
             transition: transform 0.3s ease;
+            position: relative;
         }
 
         .card:hover {
@@ -170,12 +172,31 @@
             background: linear-gradient(135deg, #fff5f5 0%, #ffe6e6 100%);
         }
 
+        .card.nuevo {
+            border-left-color: #ffc107;
+            background: linear-gradient(135deg, #fff9e6 0%, #fff2cc 100%);
+        }
+
+        .nuevo-badge {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background: #ffc107;
+            color: #1e3c72;
+            padding: 4px 8px;
+            border-radius: 20px;
+            font-size: 0.8em;
+            font-weight: bold;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+
         .card-title {
             font-size: 1.1em;
             font-weight: 600;
             color: #1e3c72;
             margin-bottom: 10px;
             word-break: break-word;
+            padding-right: 60px;
         }
 
         .card-value {
@@ -252,6 +273,12 @@
         .stat-box .label {
             color: #666;
             margin-top: 10px;
+        }
+
+        .stat-box .sub-value {
+            font-size: 0.9em;
+            color: #28a745;
+            margin-top: 5px;
         }
 
         .chart-container {
@@ -414,10 +441,10 @@
 <body>
     <div class="container">
         <div class="header">
-            <h1>Informe de Convenios <small>Análisis Porcentual Individual - Sin Agrupaciones</small></h1>
+            <h1>Informe de Convenios <small>Datos Actualizados - Incluye Nuevos Convenios</small></h1>
             <div class="total-general">
                 <div class="label">TOTAL GENERAL DE CONVENIOS</div>
-                <div class="value" id="totalGeneral">$56,128,871.66</div>
+                <div class="value" id="totalGeneral">$64,115,181.77</div>
                 <div style="font-size: 1.2em; margin-top: 10px;">100% de la cartera</div>
             </div>
         </div>
@@ -528,50 +555,50 @@
 
         <div class="footer">
             <p>Información Confidencial - 38 Convenios Analizados Individualmente</p>
-            <p class="confidential">Total General: $56,128,871.66 | Cada convenio muestra su % de participación</p>
+            <p class="confidential">Total General: $64,115,181.77 | Los convenios marcados con 🆕 son nuevas incorporaciones</p>
         </div>
     </div>
 
     <script>
-        // DATOS ORIGINALES - SIN AGRUPACIONES ARTIFICIALES
+        // DATOS ACTUALIZADOS - CON NUEVOS VALORES Y MARCADOS "NUEVO"
         const conveniosData = [
-            { nombre: "115 CONVENIO ECHAENDIA", valor: 772546.25 },
-            { nombre: "116 CONVENIO PIÑAS", valor: 1114035.56 },
-            { nombre: "117 CONVENIO MANTA", valor: 0 },
-            { nombre: "118 CONVENIO CELICA", valor: 13013.3 },
-            { nombre: "119 CONVENIO PORTOVIEJO", valor: 13199.29 },
-            { nombre: "120 CONVENIO ABUDABI", valor: 0 },
-            { nombre: "ALIANZAS Y NEGOCIOS", valor: 1364254.5 },
-            { nombre: "BDE CPT", valor: 1432404.13 },
-            { nombre: "BDE ESTRATÉGICO", valor: 932590.32 },
-            { nombre: "BEJUCO", valor: 335561.45 },
-            { nombre: "CALIDAD INSTITUCIONAL", valor: 2075499.68 },
-            { nombre: "CHILLANES", valor: 957752.54 },
-            { nombre: "CONVENIO 025-22 (INFANCIA CON FUTURO - KIT DE SANEAMIENTOS)", valor: 1202209.64 },
-            { nombre: "CONVENIO 035-2023 (VIVIENDAS CANTÓN ALAUSI)", valor: 309943.51 },
-            { nombre: "CONVENIO 039-2023 (VIVIENDAS CANTÓN GUABO)", valor: 192356.06 },
-            { nombre: "CONVENIO 040-2023 (VIVIENDAS CANTÓN PASAJE EL ORO)", valor: 945154.56 },
-            { nombre: "CONVENIO 045-2023 (VIVIENDAS CANTÓN MIRA)", valor: 49864.34 },
-            { nombre: "CONVENIO 1A AFD 2024", valor: 3103782.22 },
-            { nombre: "CONVENIO CHONE", valor: 1009896 },
-            { nombre: "CONVENIO CHUNCHI - MIDUVI", valor: 55119.06 },
-            { nombre: "CONVENIO ESMERALDAS - MIDUVI", valor: 1708092.09 },
-            { nombre: "CONVENIO GUAYAQUIL DE MIS AMORES OBRAS DE SANEAMIENTO", valor: 574353.35 },
-            { nombre: "CONVENIO MIDUVI 1A BID (2022) NUEVO PLAN DE VIVIENDA MACRO", valor: 1517887.05 },
-            { nombre: "CONVENIO MIDUVI 1B 2023 (Convenio 069-2023 , BABA Y ARCHIDONA)", valor: 4589372.92 },
-            { nombre: "CONVENIO PUCAYACU", valor: 118332.25 },
-            { nombre: "DIKAPARE", valor: 36127.59 },
-            { nombre: "MUSEO NACIONAL DEL ECUADOR MUNA", valor: 714492.7724 },
-            { nombre: "NUEVO CEIBOS", valor: 188683.14 },
-            { nombre: "NUEVO PILE", valor: 6734.97 },
-            { nombre: "SEGMENTO 1A (2019)", valor: 260154.85 },
-            { nombre: "SEGMENTO 1A (2020)", valor: 1222291.59 },
-            { nombre: "SEGMENTO 1B (AFD 2021)", valor: 3297864.77 },
-            { nombre: "SEGMENTO 1B (CDB-1)", valor: 263259.61 },
-            { nombre: "SEGMENTO 1B (CDB-2)", valor: 48206.37 },
-            { nombre: "121 CONVENIO UNIVERSIDAD PÚBLICA DE SANTO DOMINGO DE LOS TSÁCHILAS", valor: 5638691 },
-            { nombre: "123 CONVENIO ESMERALDAS", valor: 2622587.65 },
-            { nombre: "124 CONVENIO 1A 2025", valor: 17442557.28 }
+            { nombre: "115 CONVENIO ECHAENDIA", valor: 772546.25, nuevo: false },
+            { nombre: "116 CONVENIO PIÑAS", valor: 1114035.56, nuevo: false },
+            { nombre: "117 CONVENIO MANTA", valor: 1510981.91, nuevo: false },
+            { nombre: "118 CONVENIO CELICA", valor: 1567379.50, nuevo: false },
+            { nombre: "119 CONVENIO PORTOVIEJO", valor: 1589781.39, nuevo: false },
+            { nombre: "120 CONVENIO ABUDABI", valor: 700000.00, nuevo: false },
+            { nombre: "ALIANZAS Y NEGOCIOS", valor: 1364254.50, nuevo: false },
+            { nombre: "BDE CPT", valor: 1432404.13, nuevo: false },
+            { nombre: "BDE EESTRATÉGICO", valor: 1229351.11, nuevo: false },
+            { nombre: "BEJUCO", valor: 335561.45, nuevo: false },
+            { nombre: "CALIDAD INSTITUCIONAL", valor: 2075499.68, nuevo: false },
+            { nombre: "CHILLANES", valor: 1331734.15, nuevo: false },
+            { nombre: "CONVENIO 025-22 (INFANCIA CON FUTURO - KIT DE SANEAMIENTOS)", valor: 1202209.64, nuevo: false },
+            { nombre: "CONVENIO 035-2023 (VIVIENDAS CANTÓN ALAUSI)", valor: 309943.51, nuevo: false },
+            { nombre: "CONVENIO 039-2023 (VIVIENDAS CANTÓN GUABO)", valor: 192356.06, nuevo: false },
+            { nombre: "CONVENIO 040-2023 (VIVIENDAS CANTÓN PASAJE EL ORO)", valor: 945154.56, nuevo: false },
+            { nombre: "CONVENIO 045-2023 (VIVIENDAS CANTÓN MIRA)", valor: 49864.34, nuevo: false },
+            { nombre: "CONVENIO 1A AFD 2024", valor: 3103782.22, nuevo: false },
+            { nombre: "CONVENIO CHONE", valor: 1009896.00, nuevo: false },
+            { nombre: "CONVENIO CHUNCHI - MIDUVI", valor: 55119.06, nuevo: false },
+            { nombre: "CONVENIO ESMERALDAS - MIDUVI", valor: 1708092.09, nuevo: false },
+            { nombre: "CONVENIO GUAYAQUIL DE MIS AMORES OBRAS DE SANEAMIENTO", valor: 574353.35, nuevo: false },
+            { nombre: "CONVENIO MIDUVI 1A BID (2022) NUEVO PLAN DE VIVIENDA MACRO", valor: 1743224.47, nuevo: false },
+            { nombre: "CONVENIO MIDUVI 1B 2023 (Convenio 069-2023 , BABA Y ARCHIDONA)", valor: 4589372.92, nuevo: false },
+            { nombre: "CONVENIO PUCAYACU", valor: 118332.25, nuevo: false },
+            { nombre: "DIKAPARE", valor: 36127.59, nuevo: false },
+            { nombre: "MUSEO NACIONAL DEL ECUADOR MUNA", valor: 2347619.11, nuevo: true },
+            { nombre: "NUEVO CEIBOS", valor: 188683.14, nuevo: false },
+            { nombre: "NUEVO PILE", valor: 6734.97, nuevo: false },
+            { nombre: "SEGMENTO 1A (2019)", valor: 260154.85, nuevo: false },
+            { nombre: "SEGMENTO 1A (2020)", valor: 1337465.33, nuevo: false },
+            { nombre: "SEGMENTO 1B (AFD 2021)", valor: 3297864.77, nuevo: false },
+            { nombre: "SEGMENTO 1B (CDB-1)", valor: 263259.61, nuevo: false },
+            { nombre: "SEGMENTO 1B (CDB-2)", valor: 48206.37, nuevo: false },
+            { nombre: "121 CONVENIO UNIVERSIDAD PÚBLICA DE SANTO DOMINGO DE LOS TSÁCHILAS", valor: 5638691.00, nuevo: true },
+            { nombre: "123 CONVENIO ESMERALDAS", valor: 2622587.65, nuevo: true },
+            { nombre: "124 CONVENIO 1A 2025", valor: 17442557.28, nuevo: true }
         ];
 
         let currentView = 1;
@@ -640,6 +667,7 @@
             const conValor = conveniosData.filter(c => c.valor > 0).length;
             const sinValor = conveniosData.filter(c => c.valor === 0).length;
             const promedio = totalGeneral / totalConvenios;
+            const nuevos = conveniosData.filter(c => c.nuevo).length;
             
             // Convenio más grande
             const maxConvenio = conveniosData.reduce((max, c) => c.valor > max.valor ? c : max, conveniosData[0]);
@@ -650,6 +678,11 @@
                     <div class="number">${totalConvenios}</div>
                     <div class="percentage">100%</div>
                     <div class="label">Total Convenios</div>
+                </div>
+                <div class="stat-box">
+                    <div class="number">${nuevos}</div>
+                    <div class="percentage">${((nuevos/totalConvenios)*100).toFixed(1)}%</div>
+                    <div class="label">Convenios Nuevos 🆕</div>
                 </div>
                 <div class="stat-box">
                     <div class="number">${conValor}</div>
@@ -666,11 +699,6 @@
                     <div class="percentage">Promedio</div>
                     <div class="label">Por Convenio</div>
                 </div>
-                <div class="stat-box">
-                    <div class="number">${maxConvenio.nombre.substring(0,15)}...</div>
-                    <div class="percentage">${formatPercentage(maxConvenio.valor)}</div>
-                    <div class="label">Convenio Mayor</div>
-                </div>
             `;
         }
 
@@ -686,9 +714,11 @@
                 let cardClass = 'card';
                 if (item.valor > 1000000) cardClass += ' highlight';
                 if (item.valor === 0) cardClass += ' zero';
+                if (item.nuevo) cardClass += ' nuevo';
                 
                 return `
                     <div class="${cardClass}">
+                        ${item.nuevo ? '<span class="nuevo-badge">🆕 Nuevo</span>' : ''}
                         <div class="card-title tooltip">
                             ${item.nombre}
                             <span class="tooltiptext">${item.nombre}</span>
@@ -721,7 +751,8 @@
             container.innerHTML = top10.map((item, index) => {
                 const percentage = (item.valor / totalGeneral) * 100;
                 return `
-                    <div class="card highlight">
+                    <div class="card highlight ${item.nuevo ? 'nuevo' : ''}">
+                        ${item.nuevo ? '<span class="nuevo-badge">🆕 Nuevo</span>' : ''}
                         <div class="card-title">#${index + 1} - ${item.nombre}</div>
                         <div class="card-value">${formatCurrency(item.valor)}</div>
                         <div class="card-percentage">${percentage.toFixed(2)}% del total</div>
@@ -803,7 +834,8 @@
                     nombre: item.nombre, 
                     valor: item.valor, 
                     porcentaje,
-                    acumulado 
+                    acumulado,
+                    nuevo: item.nuevo 
                 };
             });
 
@@ -823,7 +855,7 @@
                         <tr>
                             <td>${item.index}</td>
                             <td class="tooltip">
-                                ${item.nombre.substring(0, 40)}${item.nombre.length > 40 ? '...' : ''}
+                                ${item.nombre.substring(0, 40)}${item.nombre.length > 40 ? '...' : ''} ${item.nuevo ? '🆕' : ''}
                                 <span class="tooltiptext">${item.nombre}</span>
                             </td>
                             <td>${formatCurrency(item.valor)}</td>
@@ -930,20 +962,21 @@
             const medio = conveniosData.filter(c => c.valor >= 50000 && c.valor < 500000);
 
             document.getElementById('zeroCount').textContent = cero.length;
-            document.getElementById('zeroPercentage').textContent = formatPercentage(cero.length, conveniosData.length);
+            document.getElementById('zeroPercentage').textContent = ((cero.length / conveniosData.length) * 100).toFixed(1) + '%';
             
             document.getElementById('lowCount').textContent = bajo.length;
-            document.getElementById('lowPercentage').textContent = formatPercentage(bajo.length, conveniosData.length);
+            document.getElementById('lowPercentage').textContent = ((bajo.length / conveniosData.length) * 100).toFixed(1) + '%';
             
             document.getElementById('mediumCount').textContent = medio.length;
-            document.getElementById('mediumPercentage').textContent = formatPercentage(medio.length, conveniosData.length);
+            document.getElementById('mediumPercentage').textContent = ((medio.length / conveniosData.length) * 100).toFixed(1) + '%';
 
             const todosBajoImpacto = [...cero, ...bajo, ...medio].sort((a, b) => b.valor - a.valor);
             
             document.getElementById('lowImpactConvenios').innerHTML = todosBajoImpacto.map(item => {
                 const percentage = (item.valor / totalGeneral) * 100;
                 return `
-                    <div class="card ${item.valor === 0 ? 'zero' : ''}">
+                    <div class="card ${item.valor === 0 ? 'zero' : ''} ${item.nuevo ? 'nuevo' : ''}">
+                        ${item.nuevo ? '<span class="nuevo-badge">🆕 Nuevo</span>' : ''}
                         <div class="card-title tooltip">
                             ${item.nombre}
                             <span class="tooltiptext">${item.nombre}</span>
